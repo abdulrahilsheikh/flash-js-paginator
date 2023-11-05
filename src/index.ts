@@ -99,6 +99,3 @@ const paginator = ({
   }
   return paginationInfo;
 };
-
-const pg = paginator({ totalItems: 7, currentPage: 6 });
-console.log(pg);
