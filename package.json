@@ -1,0 +1,27 @@
+{
+  "name": "flash-js-paginator",
+  "version": "1.0.0",
+  "description": "A framework agnostic pagination library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulrahilsheikh/flash-js-paginator.git"
+  },
+  "keywords": [
+    "pagination",
+    "js",
+    "ts"
+  ],
+  "author": "Rahil Sheikh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdulrahilsheikh/flash-js-paginator/issues"
+  },
+  "homepage": "https://github.com/abdulrahilsheikh/flash-js-paginator#readme",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
