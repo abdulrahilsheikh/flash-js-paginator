@@ -1,4 +1,4 @@
-interface IPaginationInfo {
+export interface IPaginationInfo {
   leftItems: PageInfo[];
   leftSeparator: boolean;
   centerItems: PageInfo[];
@@ -9,18 +9,53 @@ interface IPaginationInfo {
   lastPage: number;
   firstPage: number;
 }
-type PageInfo = {
+export type PageInfo = {
   pageNo: number;
   isActive: boolean;
 };
 
-const paginator = ({
-  currentPage = 1,
+/**
+ * @typedef {Object} PageInfo
+ * @property {number} pageNo - The page number.
+ * @property {boolean} isActive - Indicates whether the page is the current active page.
+ */
+
+/**
+ * @typedef {Object} IPaginationInfo
+ * @property {PageInfo[]} leftItems - An array of page information objects representing pages to the left of the current page.
+ * @property {boolean} leftSeparator - Indicates whether a separator should be displayed to the left of the current page.
+ * @property {PageInfo[]} centerItems - An array of page information objects representing sibling pages around the current page.
+ * @property {boolean} rightSeparator - Indicates whether a separator should be displayed to the right of the current page.
+ * @property {PageInfo[]} rightItems - An array of page information objects representing pages to the right of the current page.
+ * @property {number} nextPage - The page number of the next page, or the total number of pages if there is no next page.
+ * @property {number} prevPage - The page number of the previous page, or 1 if there is no previous page.
+ * @property {number} firstPage - The page number of the first page.
+ * @property {number} lastPage - The page number of the last page.
+ */
+
+/**
+ * Generates pagination information for a list of items.
+ * @param {Object} options - Configuration options for pagination.
+ * @param {number} [options.currentPage=1] - The current page number.
+ * @param {number} options.totalItems - The total number of items that need to be paginated.
+ * @param {number} options.itemsPerPage - The number of items to display per page.
+ * @param {number} [options.siblingsCount=1] - The number of sibling pages to show on each side of the current page.
+ * @param {number} [options.boundaries=1] - The number of boundary pages to show on each side.
+ * @returns {IPaginationInfo} - An object containing pagination information.
+ */
+export const Paginator = ({
+  currentPage,
   totalItems = 1,
   itemsPerPage = 1,
   siblingsCount = 1,
   boundaries = 1,
-}) => {
+}: {
+  currentPage: number;
+  totalItems: number;
+  itemsPerPage: number;
+  siblingsCount?: number;
+  boundaries?: number;
+}): IPaginationInfo => {
   const totalPage = Math.ceil(totalItems / itemsPerPage);
   const paginationInfo: IPaginationInfo = {
     leftItems: [],
@@ -97,5 +132,8 @@ const paginator = ({
       }
     );
   }
+  /**
+   * @type {IPaginationInfo}
+   */
   return paginationInfo;
 };
